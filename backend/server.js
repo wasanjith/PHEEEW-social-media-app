@@ -9,7 +9,7 @@ const app = express();
 
 console.log(process.env.MONGO_URI); // Corrected from MOGO_URI to MONGO_URI
 
-
+app.use(express.json()); // to pass req.body
 app.use("/api/auth", authRoutes);
 const PORT = process.env.PORT || 5000;
 
