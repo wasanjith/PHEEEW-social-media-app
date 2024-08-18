@@ -1,8 +1,8 @@
 import express from 'express';
 import authRoutes from '../routes/auth.routes.js';
 import bcrypt from 'bcryptjs';
-import User from '../models/user.model.js';
-import { generateTokenAndSetCookie } from '../utils/auth.js';
+import User from '../modles/user.model.js';
+import { generateTokenAndSetCookie } from '../lib/utils/generateToken.js';
 
 
 
@@ -10,13 +10,13 @@ import { generateTokenAndSetCookie } from '../utils/auth.js';
 
 export const signup = async (req, res) => {
    try{
-    const {fullNamr, username, email, password} = req.body;
+    const {fullName, username, email, password} = req.body;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(!emailRegex.test(email)) {
         return res.status(400).json({ error: "Invalid email format" });
     }
 
-    const existingUser = await User.findOne({ username})
+    const existingUser = await User.findOne({username})
     if (existingUser) {
         return res.status(400).json({ error: "Username is already taken"});
     }
@@ -32,7 +32,7 @@ export const signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password,salt);
 
     const newUser = new User({
-        fullNamr,
+        fullName,
         username,
         email,
         password: hashedPassword,
@@ -56,7 +56,7 @@ export const signup = async (req, res) => {
         res.status(400).json({ error : "Invalid user data"});
     }
    } catch (error) {
-    console.log("Error in singup controller", error.message);
+    console.log("Error in signup controller", error.message);
     res.status(500).json({ error: "Internal Server Error"})
 
    }
