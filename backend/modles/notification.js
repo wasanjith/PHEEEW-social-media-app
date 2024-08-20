@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-// import User from "../controllers/user.controller";
 
 const notificationSchema = new mongoose.Schema({
     from:{
