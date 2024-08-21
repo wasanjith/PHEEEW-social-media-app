@@ -102,27 +102,21 @@ export const updateUser = async (req, res) => {
         let user = await User.findById(userId);
         if(!user) return res.status(404).json({message: "User not found"});
 
-        if(!user.currentPassword){
-            return res.status(400).json({error: "please enter the valid password"});
-        }
+        if ((!newPassword && currentPassword) || (!currentPassword && newPassword)) {
+			return res.status(400).json({ error: "Please provide both current password and new password" });
+		}
 
-        if(currentPassword === currentPassword){
-            return res.status(400).json({message: "current password is correct now add new password filed"})
-        }
+		if (currentPassword && newPassword) {
+			const isMatch = await bcrypt.compare(currentPassword, user.password);
+			if (!isMatch) return res.status(400).json({ error: "Current password is incorrect" });
+			if (newPassword.length < 6) {
+				return res.status(400).json({ error: "Password must be at least 6 characters long" });
+			}
 
-        if((!newPassword && currentPassword )||(!currentPassword && newPassword)){
-            return res.status(400).json({message: "please provide both current paswword and new password"});
-        }
+			const salt = await bcrypt.genSalt(10);
+			user.password = await bcrypt.hash(newPassword, salt);
+		}
 
-        if(currentPassword && newPassword){
-            const isMath = await bcrypt.compare(currentPassword, user.password);
-            if(!isMath) return res.sataus(400).json({error: "current password is incorrect"});
-            if(newPassword.length < 6) {
-                return res.status(400).json({error: "Password must be at least 6 characters long"});
-            }
-            const salt = await bcrypt.genSalt(10);
-            user.password = await bcrypt.hash(newPassword, salt);
-        }
         if(profileImg){
 
             if(user.profileImg){
