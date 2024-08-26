@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import PHEEEWsvg from "../../../components/svgs/PHEEEWsvg";
+import bg from "../../../assets/bg.svg"; // Importing the background SVG
 
 import { MdOutlineMail } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
@@ -28,15 +29,22 @@ const SignUpPage = () => {
 	const isError = false;
 
 	return (
-    
-		<div className='max-w-screen-xl mx-auto flex h-screen px-10'>
-			<div className='flex-1 hidden lg:flex items-center  justify-center'>
-				<PHEEEWsvg/>
+		<div
+			className='max-w-screen-xl mx-auto flex h-screen px-10'
+			style={{
+				backgroundImage: `url(${bg})`, // Use the imported bg.svg as a background
+				backgroundSize: 'cover',      // Cover the entire div
+				backgroundPosition: 'center', // Center the background image
+				backgroundRepeat: 'no-repeat', // Prevent repeating the image
+			}}
+		>
+			<div className='flex-1 hidden lg:flex items-center justify-center'>
+				<PHEEEWsvg className='w-48 h-48 fill-white' /> {/* Adjust the logo size */}
 			</div>
 			<div className='flex-1 flex flex-col justify-center items-center'>
-				<form className='lg:w-2/3  mx-auto md:mx-20 flex gap-4 flex-col' onSubmit={handleSubmit}>
-					<PHEEEWsvg className='w-24 lg:hidden fill-white' />
-					<h1 className='text-4xl font-extrabold text-white'>Join with Us.</h1>
+				<form className='lg:w-2/3 mx-auto md:mx-20 flex gap-4 flex-col' onSubmit={handleSubmit}>
+					<PHEEEWsvg className='w-32 lg:hidden fill-white' /> {/* Adjust the logo size */}
+					<h1 className='text-4xl font-extrabold text-white'>Join today.</h1>
 					<label className='input input-bordered rounded flex items-center gap-2'>
 						<MdOutlineMail />
 						<input
@@ -53,7 +61,7 @@ const SignUpPage = () => {
 							<FaUser />
 							<input
 								type='text'
-								className='grow '
+								className='grow'
 								placeholder='Username'
 								name='username'
 								onChange={handleInputChange}
@@ -96,4 +104,5 @@ const SignUpPage = () => {
 		</div>
 	);
 };
+
 export default SignUpPage;
