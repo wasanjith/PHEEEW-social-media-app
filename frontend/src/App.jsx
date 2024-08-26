@@ -1,3 +1,4 @@
+import Sidebar from "./components/common/Sidebar";
 import LoginPage from "./pages/auth/login/LoginPage";
 import SignUpPage from "./pages/auth/signup/signUpPage";
 import HomePage from "./pages/home/HomePage";
@@ -8,6 +9,8 @@ function App() {
   return (
     <>
       <div className='flex max-w-6xl mx-aut'>
+        {/* Common component, bc it's not weapped with Routes */}
+        <Sidebar />
         <Routes>
           <Route path='/' element={<HomePage/>}/>
           <Route path='/login' element={<LoginPage/>}/>
