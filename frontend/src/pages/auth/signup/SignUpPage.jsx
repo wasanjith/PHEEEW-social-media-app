@@ -39,7 +39,7 @@ const SignUpPage = () => {
 			}}
 		>
 			<div className='flex-1 hidden lg:flex items-center justify-center'>
-				<PHEEEWsvg className='w-48 h-48 fill-white' /> {/* Adjust the logo size */}
+				<PHEEEWsvg className='size-96 fill-white' /> {/* Adjust the logo size */}
 			</div>
 			<div className='flex-1 flex flex-col justify-center items-center'>
 				<form className='lg:w-2/3 mx-auto md:mx-20 flex gap-4 flex-col' onSubmit={handleSubmit}>

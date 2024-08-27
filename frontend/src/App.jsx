@@ -1,3 +1,4 @@
+import RightPanel from "./components/common/RightPanel";
 import Sidebar from "./components/common/Sidebar";
 import LoginPage from "./pages/auth/login/LoginPage";
 import SignUpPage from "./pages/auth/signup/signUpPage";
@@ -18,6 +19,7 @@ function App() {
           {/* <Route path='/user' element={<UserPage/>}/>
           <Route path='/followers' element={<FollowersPage/>}/> */}
         </Routes>
+        <RightPanel />
       </div>
     </>
   );
