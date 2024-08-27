@@ -6,6 +6,7 @@ import HomePage from "./pages/home/HomePage";
 import { Routes, Route } from 'react-router-dom';
 import NotificationPage from "./pages/notification/NotificationPage";
 import ProfilePage from "./pages/profile/ProfilePage";
+import { Toaster } from "react-hot-toast";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/profile/:username' element={<ProfilePage/>}/>
         </Routes>
         <RightPanel />
+        <Toaster />
       </div>
     </>
   );

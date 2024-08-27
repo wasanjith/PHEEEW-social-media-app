@@ -27,6 +27,11 @@ app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/notification", notificationRoutes);
 
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: "Internal Server Error" });
+  });
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
     connectMongoDB();
