@@ -1,11 +1,11 @@
 export const POSTS = [
 	{
 		_id: "1",
-		text: "Let's build a fullstack WhatsApp clone with NEXT.JS 14 😍",
-		img: "/posts/post1.png",
+		text: "Hello guys this is my first day of WD apartment 😍🛋", //changed
+		img: "/posts/post1.webp",
 		user: {
 			username: "johndoe",
-			profileImg: "/avatars/boy1.png",
+			profileImg: "/avatars/boy1.png", //changed
 			fullName: "John Doe",
 		},
 		comments: [

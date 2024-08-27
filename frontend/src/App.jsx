@@ -4,6 +4,8 @@ import LoginPage from "./pages/auth/login/LoginPage";
 import SignUpPage from "./pages/auth/signup/signUpPage";
 import HomePage from "./pages/home/HomePage";
 import { Routes, Route } from 'react-router-dom';
+import NotificationPage from "./pages/notification/NotificationPage";
+import ProfilePage from "./pages/profile/ProfilePage";
 
 
 function App() {
@@ -16,8 +18,8 @@ function App() {
           <Route path='/' element={<HomePage/>}/>
           <Route path='/login' element={<LoginPage/>}/>
           <Route path='/signup' element={<SignUpPage/>}/>
-          {/* <Route path='/user' element={<UserPage/>}/>
-          <Route path='/followers' element={<FollowersPage/>}/> */}
+          <Route path='/notifications' element={<NotificationPage/>}/>
+          <Route path='/profile/:username' element={<ProfilePage/>}/>
         </Routes>
         <RightPanel />
       </div>
