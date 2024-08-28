@@ -5,7 +5,7 @@ import PHEEEWsvg from "../../../components/svgs/PHEEEWsvg";
 
 import { MdOutlineMail } from "react-icons/md";
 import { MdPassword } from "react-icons/md";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast"
 
 const LoginPage = () => {
@@ -13,6 +13,8 @@ const LoginPage = () => {
 		username: "",
 		password: "",
 	});
+
+	const queryClient = useQueryClient();
 
 	const {mutate:LoginMutation , isPending, isError, error} = useMutation({
 		mutationFn: async ({username, password}) => {
@@ -34,9 +36,10 @@ const LoginPage = () => {
 			}
 		},
 		onSuccess: (data) => {
-			toast.success("Login successful");
-		}
-	})
+			// refetch the authUser
+			queryClient.invalidateQueries({queryKey: ["authUser"]});
+		},
+	});
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
