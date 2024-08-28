@@ -1,5 +1,3 @@
-import express from 'express';
-import authRoutes from '../routes/auth.routes.js';
 import bcrypt from 'bcryptjs';
 import User from '../modles/user.model.js';
 import { generateTokenAndSetCookie } from '../lib/utils/generateToken.js';
