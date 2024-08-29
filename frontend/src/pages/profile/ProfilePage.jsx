@@ -61,7 +61,7 @@ const ProfilePage = () => {
 
 	useEffect(() => {
 		refetch()
-	},[username, refetch])
+	},[username, refetch, username])
 
 	return (
 		<>
@@ -208,7 +208,7 @@ const ProfilePage = () => {
 						</>
 					)}
 
-					<Posts />
+					<Posts feedType={feedType} username = {username} userId = {user?._id}/>
 				</div>
 			</div>
 		</>
