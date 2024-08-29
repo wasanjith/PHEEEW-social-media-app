@@ -88,17 +88,17 @@ const Post = ({ post }) => {
 	const { mutate: commentPost, isPending: isCommenting } = useMutation({
 		mutationFn: async () => {
 			try {
-				const res = await fetch(`/api/posts/comment/${post._id}`,{
+				const res = await fetch(`/api/posts/comment/${post._id}`, {
 					method: "POST",
 					headers: {
-						"Content-Type": "application/json",
+						"Content-Type": "applications/json",
 					},
 					body: JSON.stringify({ text: comment }),
-				})
+				});
 				const data = await res.json();
 
-				if(!res.ok) {
-					throw new Error(data.error || "Something went wrong")
+				if (!res.ok) {
+					throw new Error(data.error || "Something went wrong");
 				}
 				return data;
 			} catch (error) {
@@ -113,7 +113,8 @@ const Post = ({ post }) => {
 		onError: (error) => {
 			toast.error(error.message);
 		},
-	})
+	});
+
  
 
 
