@@ -12,7 +12,8 @@ import { formatPostDate } from "../../utils/date";
 
 const Post = ({ post }) => {
 	const [comment, setComment] = useState("");
-	const { data: authUser, isLoading, error } = useQuery({ queryKey: ["authUser"] });	const queryClient = useQueryClient();
+	const { data: authUser } = useQuery({ queryKey: ["authUser"] });	
+	const queryClient = useQueryClient();
 	const postOwner = post.user;
 
 	
@@ -91,7 +92,7 @@ const Post = ({ post }) => {
 				const res = await fetch(`/api/posts/comment/${post._id}`, {
 					method: "POST",
 					headers: {
-						"Content-Type": "applications/json",
+						"Content-Type": "application/json",
 					},
 					body: JSON.stringify({ text: comment }),
 				});
@@ -114,6 +115,7 @@ const Post = ({ post }) => {
 			toast.error(error.message);
 		},
 	});
+
 
  
 
@@ -226,7 +228,7 @@ const Post = ({ post }) => {
 											value={comment}
 											onChange={(e) => setComment(e.target.value)}
 										/>
-										<button className='btn btn-primary rounded-full btn-sm text-white px-4'>
+										<button onClick={() => commentPost()} disabled={isCommenting} className='btn btn-primary rounded-full btn-sm text-white px-4'>
 											{isCommenting ? <LoadingSpinner size = 'md'/> : "Post"}
 										</button>
 									</form>
