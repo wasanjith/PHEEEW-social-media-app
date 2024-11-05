@@ -53,7 +53,7 @@ const LoginPage = () => {
 
 
 	return (
-		<div className='max-w-screen-xl mx-auto flex h-screen'>
+		<div className='max-w-screen-xl flex h-screen ml-72'>
 			<div className='flex-1 hidden lg:flex items-center  justify-center'>
 				<PHEEEWsvg className='lg:w-2/3 fill-white' />
 			</div>
