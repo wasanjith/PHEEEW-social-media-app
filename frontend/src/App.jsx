@@ -42,7 +42,7 @@ function App() {
 	}
 
   return (
-      <div className='flex max-w-6xl mx-aut'>
+      <div className='flex max-w-6xl mx-auto'>
         {/* Common component, bc it's not weapped with Routes */}
         {authUser && <Sidebar />}
         <Routes>
